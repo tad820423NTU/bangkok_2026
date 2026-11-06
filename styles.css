@@ -80,3 +80,95 @@ body.mail-sheet-open{overflow:hidden}
   .flight-plane-svg{width:30px;height:30px}
   .booking-card::after{right:12px;top:13px;width:18px;height:18px}
 }
+
+
+
+/* Five-day overview — editorial schedule, shared data with daily view */
+.overview-section{padding-top:34px;padding-bottom:124px;scroll-margin-top:24px}
+.overview-heading h2{font-family:"Manrope","Noto Sans TC",sans-serif;letter-spacing:-.065em}
+.overview-subhead{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 0;border-top:1px solid #ccc5c1;border-bottom:1px solid #ccc5c1}
+.overview-subhead>div{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.overview-subhead strong{font:800 11px "Manrope",sans-serif;letter-spacing:.16em}
+.overview-subhead span{font-size:12px;color:#77717a}
+.overview-detail-link{display:inline-flex;gap:7px;align-items:center;font-size:11px;font-weight:700;white-space:nowrap}
+.overview-detail-link .arrow-svg{width:15px;height:15px}
+.overview-jumps{display:flex;gap:8px;padding:20px 0 24px;overflow-x:auto;scrollbar-width:none}
+.overview-jumps::-webkit-scrollbar{display:none}
+.overview-jump{display:flex;flex-direction:column;gap:7px;min-width:104px;flex:1;padding:14px 17px;border:1px solid #d7cfc8;background:#fffdf9;transition:background .16s,border-color .16s}
+.overview-jump:hover{background:#eee6fa;border-color:#a79bb2}
+.overview-jump span{font:800 9px "Manrope",sans-serif;letter-spacing:.13em;color:#9a7c91}
+.overview-jump strong{font:800 19px "Manrope",sans-serif;letter-spacing:-.04em}
+.overview-days{display:grid;gap:14px}
+.overview-day{display:grid;grid-template-columns:minmax(210px,28%) minmax(0,1fr);border:1px solid #ddd5d0;background:#fefcf8;scroll-margin-top:25px}
+.overview-day-meta{background:#e7dff1;display:flex;flex-direction:column;align-items:flex-start;padding:28px 28px 25px;gap:0;min-width:0}
+.overview-day:nth-child(2n) .overview-day-meta{background:#e9e3df}
+.overview-day-kicker{font:800 10px "Manrope","Noto Sans TC",sans-serif;letter-spacing:.17em;color:#7b647a}
+.overview-day-meta h3{font:800 clamp(36px,4.1vw,60px)/1 "Manrope",sans-serif;letter-spacing:-.075em;margin:17px 0 16px}
+.overview-day-headline{font:800 clamp(15px,1.6vw,21px)/1.3 "Manrope",sans-serif;letter-spacing:-.045em;margin:0 0 6px}
+.overview-day-subtitle{font-size:11px;line-height:1.8;color:#6b606a;margin:0 0 24px}
+.overview-open-day{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;margin-top:auto;padding-bottom:5px;border-bottom:1px solid currentColor}
+.overview-link-icon{width:14px;height:14px}
+.overview-event-list{margin:0;padding:6px 24px;list-style:none;min-width:0}
+.overview-event{display:grid;grid-template-columns:minmax(67px,85px) minmax(0,1fr) minmax(74px,87px) minmax(48px,67px);align-items:center;column-gap:9px;border-bottom:1px solid #ebe5df;min-height:72px;padding:11px 0}
+.overview-event:last-child{border-bottom:0}
+.overview-event-time{font:800 12px "Manrope","Noto Sans TC",sans-serif;letter-spacing:-.03em;color:#3b333b;overflow-wrap:anywhere}
+.overview-event-main{min-width:0;display:grid;gap:4px}
+.overview-event-main strong{font-size:12px;line-height:1.5;font-weight:700;overflow-wrap:anywhere}
+.overview-event-main span{font-size:10px;line-height:1.4;color:#97868c}
+.overview-event-status{display:inline-flex;gap:6px;align-items:center;justify-self:start;color:#807581;font-size:10px;white-space:nowrap}
+.overview-event-status.overview-confirmed{color:#247653}
+.overview-event-status.overview-planned{color:#8f6a40}
+.overview-event-actions{display:flex;justify-content:flex-end;gap:5px;align-items:center}
+.overview-small-action{display:flex;align-items:center;justify-content:center;width:28px;height:28px;flex:none;border:1px solid #d7d0c8;border-radius:4px;color:#615766;transition:background .16s,border-color .16s}
+.overview-small-action:hover{background:#e9dff1;border-color:#aa93c0}
+.overview-small-action.overview-email{color:#745f96}
+.overview-action-icon{width:15px;height:15px}
+.overview-footnote{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;line-height:1.7;color:#827681;margin:19px 0 0}
+.overview-footnote .key-dot{margin-left:7px}
+@media(max-width:840px){
+  .overview-day{grid-template-columns:190px minmax(0,1fr)}
+  .overview-day-meta{padding:24px 20px}
+  .overview-event-list{padding:4px 16px}
+  .overview-event{grid-template-columns:62px minmax(0,1fr) 22px 55px;column-gap:7px}
+  .overview-event-status{font-size:0;justify-self:center}
+  .overview-event-status .key-dot{width:8px;height:8px}
+}
+@media(max-width:680px){
+  .overview-section{padding-top:10px;padding-bottom:84px}
+  .overview-heading h2{font-size:clamp(42px,10.2vw,64px)}
+  .overview-subhead{display:block;padding:17px 0}
+  .overview-subhead>div{gap:6px;display:grid}
+  .overview-subhead strong{font-size:10px}
+  .overview-subhead span{font-size:11px}
+  .overview-detail-link{margin-top:11px;font-size:11px}
+  .overview-jumps{margin-right:-20px;padding:17px 20px 17px 0;gap:8px}
+  .overview-jump{flex:none;min-width:94px;padding:12px 14px;gap:7px}
+  .overview-jump strong{font-size:17px}
+  .overview-day{display:block}
+  .overview-days{gap:15px}
+  .overview-day-meta{padding:22px 22px 20px}
+  .overview-day-meta h3{font-size:43px;margin:12px 0 9px}
+  .overview-day-headline{font-size:18px}
+  .overview-day-subtitle{margin:2px 0 17px;font-size:11px}
+  .overview-open-day{font-size:10px}
+  .overview-event-list{padding:4px 15px}
+  .overview-event{grid-template-columns:60px minmax(0,1fr) auto;grid-template-areas:"time main actions" "time status actions";column-gap:9px;row-gap:4px;align-items:start;min-height:76px;padding:13px 0}
+  .overview-event-time{grid-area:time;font-size:11px;padding-top:3px}
+  .overview-event-main{grid-area:main;gap:3px}
+  .overview-event-main strong{font-size:12px;line-height:1.5}
+  .overview-event-main span{font-size:10px}
+  .overview-event-status{grid-area:status;font-size:9px;justify-self:start;gap:5px}
+  .overview-event-status .key-dot{width:6px;height:6px}
+  .overview-event-actions{grid-area:actions;display:flex;flex-direction:column;gap:5px;align-self:center}
+  .overview-small-action{width:28px;height:27px}
+  .overview-footnote{display:block;font-size:10px}
+  .overview-footnote .key-dot{margin:0 4px 0 8px}
+  .mobile-nav{grid-template-columns:repeat(5,minmax(0,1fr));padding-left:5px;padding-right:5px}
+  .mobile-nav a{font-size:9px;gap:4px;min-height:44px;white-space:nowrap;letter-spacing:-.035em}
+  .mobile-nav .nav-svg{width:21px;height:21px}
+  .mobile-nav .nav-icon{width:24px;height:24px}
+}
+@media(max-width:355px){
+  .mobile-nav a{font-size:8px}
+  .overview-event{grid-template-columns:49px minmax(0,1fr) auto;column-gap:7px}
+}
