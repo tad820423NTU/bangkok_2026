@@ -153,6 +153,54 @@ function initTabs() {
   window.addEventListener("popstate",()=>drawDay(getDayIndex(),false));
   drawDay(currentDay,false);
 }
+
+/* Entire itinerary, generated from the same days[] as the daily view. */
+function renderOverview() {
+  const jumpTarget=$("#overviewJumps");
+  const countTarget=$("#overviewCount");
+  const target=$("#overviewDays");
+  if(!jumpTarget || !countTarget || !target)return;
+  const count=days.reduce((n,day)=>n+day.events.length,0);
+  const confirmed=days.reduce((n,day)=>n+day.events.filter(ev=>ev.status==="confirmed").length,0);
+  countTarget.textContent=days.length+" 天・"+count+" 項安排・"+confirmed+" 項已確認";
+  jumpTarget.innerHTML=days.map((day,index)=>
+    '<a href="#overview-day-'+(index+1)+'" class="overview-jump"><span>DAY '+String(index+1).padStart(2,"0")+'</span><strong>'+escapeHtml(day.tab)+'</strong></a>'
+  ).join("");
+  target.innerHTML=days.map((day,index)=>{
+    const meta='<div class="overview-day-meta">'+
+      '<span class="overview-day-kicker">'+escapeHtml(day.name)+' / '+escapeHtml(day.weekday)+'</span>'+
+      '<h3>'+escapeHtml(day.tab)+'</h3>'+
+      '<p class="overview-day-headline">'+escapeHtml(day.headline)+'</p>'+
+      '<p class="overview-day-subtitle">'+escapeHtml(day.subtitle)+'</p>'+
+      '<a href="?day='+String(index+1).padStart(2,"0")+'#itinerary" data-overview-day="'+index+'" class="overview-open-day">查看當天詳細行程 '+siteIconSvg("arrow","overview-link-icon")+'</a>'+
+      '</div>';
+    const events=day.events.map(event=>{
+      const status=event.status||"planned";
+      const map=event.place
+        ? '<a href="'+mapLink(event.place)+'" class="overview-small-action" target="_blank" rel="noopener noreferrer" aria-label="在 Google Maps 查看 '+escapeHtml(event.title)+'" title="地圖">'+siteIconSvg("arrow","overview-action-icon")+'</a>'
+        : "";
+      const email=mailLink(event.mail)
+        ? '<a href="'+mailLink(event.mail)+'" class="overview-small-action overview-email" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(event.title)+' 訂位確認信" title="訂位信">'+siteIconSvg("arrow","overview-action-icon")+'</a>'
+        : "";
+      return '<li class="overview-event">'+
+        '<time class="overview-event-time">'+escapeHtml(event.time)+'</time>'+
+        '<div class="overview-event-main"><strong>'+escapeHtml(event.title)+'</strong><span>'+escapeHtml(event.type)+'</span></div>'+
+        '<span class="overview-event-status overview-'+status+'"><i class="key-dot '+status+'"></i>'+stateNames[status]+'</span>'+
+        '<div class="overview-event-actions">'+map+email+'</div>'+
+      '</li>';
+    }).join("");
+    return '<article class="overview-day" id="overview-day-'+(index+1)+'">'+meta+'<ol class="overview-event-list">'+events+'</ol></article>';
+  }).join("");
+  target.addEventListener("click",event=>{
+    const link=event.target.closest("[data-overview-day]");
+    if(!link)return;
+    event.preventDefault();
+    drawDay(Number(link.dataset.overviewDay));
+    const destination=document.getElementById("itinerary");
+    if(destination)destination.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  });
+}
+
 function updateCountdown() {
   const now=Date.now();
   const start=Date.parse("2026-12-30T00:00:00+07:00");
@@ -169,6 +217,7 @@ function updateCountdown() {
 }
 function init() {
   initTabs();
+  renderOverview();
   $("#bookingGrid").innerHTML=bookings.map(bookingMarkup).join("");
   updateCountdown();
   window.setInterval(updateCountdown,60000);
