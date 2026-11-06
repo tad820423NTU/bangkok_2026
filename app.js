@@ -17,7 +17,9 @@ function siteIconSvg(name, className="site-icon") {
     arrow:'<path d="M7 17 17 7M7 7h10v10"/>',
     plane:'<path d="M19.6 4.4c.9-.9 2.1-.9 2.5-.5.4.4.3 1.6-.5 2.5L15 13l2 7-2.4 1.4-4.3-6.1-4.1 4.1-3.2.2.2-3.2 4.1-4.1-6.1-4.3L2.6 5.6l7 2z"/>',
     sun:'<circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.5M12 19.8v2.5M1.7 12h2.5M19.8 12h2.5M4.72 4.72l1.77 1.77m11.02 11.02 1.77 1.77M19.28 4.72l-1.77 1.77M6.49 17.51l-1.77 1.77"/>',
-    diamond:'<path d="m12 2 9.5 10L12 22 2.5 12 12 2Z"/><path d="M12 7v10M7 12h10"/>'
+    diamond:'<path d="m12 2 9.5 10L12 22 2.5 12 12 2Z"/><path d="M12 7v10M7 12h10"/>',
+    map:'<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',
+    mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>'
   };
   if(!Object.prototype.hasOwnProperty.call(shapes,name))return "";
   return '<svg class="'+className+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">'+shapes[name]+'</svg>';
@@ -177,10 +179,10 @@ function renderOverview() {
     const events=day.events.map(event=>{
       const status=event.status||"planned";
       const map=event.place
-        ? '<a href="'+mapLink(event.place)+'" class="overview-small-action" target="_blank" rel="noopener noreferrer" aria-label="在 Google Maps 查看 '+escapeHtml(event.title)+'" title="地圖">'+siteIconSvg("arrow","overview-action-icon")+'</a>'
+        ? '<a href="'+mapLink(event.place)+'" class="overview-small-action" target="_blank" rel="noopener noreferrer" aria-label="在 Google Maps 查看 '+escapeHtml(event.title)+'" title="地圖">'+siteIconSvg("map","overview-action-icon")+'</a>'
         : "";
       const email=mailLink(event.mail)
-        ? '<a href="'+mailLink(event.mail)+'" class="overview-small-action overview-email" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(event.title)+' 訂位確認信" title="訂位信">'+siteIconSvg("arrow","overview-action-icon")+'</a>'
+        ? '<a href="'+mailLink(event.mail)+'" class="overview-small-action overview-email" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(event.title)+' 訂位確認信" title="訂位信">'+siteIconSvg("mail","overview-action-icon")+'</a>'
         : "";
       return '<li class="overview-event">'+
         '<time class="overview-event-time">'+escapeHtml(event.time)+'</time>'+
