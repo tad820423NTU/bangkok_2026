@@ -9,13 +9,27 @@ const mail = Object.freeze({
   seafood:"1a18229e9797e6a2", whiteparty:"1a0f5b6fb9b552f0",
   cote:"1a13ad7c557853e1"
 });
+
+/* Monochrome brand SVGs are immune to iOS emoji font substitution. */
+function siteIconSvg(name, className="site-icon") {
+  const shapes={
+    sparkle:'<path d="M12 2.75v5.5M12 15.75v5.5M2.75 12h5.5M15.75 12h5.5M5.46 5.46l3.89 3.89M14.65 14.65l3.89 3.89M18.54 5.46l-3.89 3.89M9.35 14.65l-3.89 3.89"/>',
+    arrow:'<path d="M7 17 17 7M7 7h10v10"/>',
+    plane:'<path d="M19.6 4.4c.9-.9 2.1-.9 2.5-.5.4.4.3 1.6-.5 2.5L15 13l2 7-2.4 1.4-4.3-6.1-4.1 4.1-3.2.2.2-3.2 4.1-4.1-6.1-4.3L2.6 5.6l7 2z"/>',
+    sun:'<circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.5M12 19.8v2.5M1.7 12h2.5M19.8 12h2.5M4.72 4.72l1.77 1.77m11.02 11.02 1.77 1.77M19.28 4.72l-1.77 1.77M6.49 17.51l-1.77 1.77"/>',
+    diamond:'<path d="m12 2 9.5 10L12 22 2.5 12 12 2Z"/><path d="M12 7v10M7 12h10"/>'
+  };
+  if(!Object.prototype.hasOwnProperty.call(shapes,name))return "";
+  return '<svg class="'+className+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">'+shapes[name]+'</svg>';
+}
+
 const mapLink = place => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place);
 const mailLink = key => key && mail[key] ? gmailBase + mail[key] : null;
 const stateNames = Object.freeze({ confirmed:"已確認", planned:"規劃中", flexible:"彈性安排" });
 
 const days = [
   {
-    date:"2026-12-30",tab:"12.30",weekday:"週三",name:"DAY 01",headline:"Touchdown, Bangkok.",subtitle:"從抵達開始，讓城市帶我們走。",symbol:"✈",
+    date:"2026-12-30",tab:"12.30",weekday:"週三",name:"DAY 01",headline:"Touchdown, Bangkok.",subtitle:"從抵達開始，讓城市帶我們走。",symbol:"plane",
     route:["Amara Bangkok Hotel","Siam Discovery Bangkok","Central Embassy Bangkok","Lennon's Rosewood Bangkok"],
     events:[
       {time:"07:00",type:"交通",title:"出發去桃園機場",desc:"已確認台灣端機場接送，2 人。集合位置請查看私人通知，不在公開網站顯示。",status:"confirmed",mail:"airport"},
@@ -29,7 +43,7 @@ const days = [
     ]
   },
   {
-    date:"2026-12-31",tab:"12.31",weekday:"週四",name:"DAY 02",headline:"The last dance of 2026.",subtitle:"一場按摩、一頓海鮮，然後跳舞迎接新年。",symbol:"✳",
+    date:"2026-12-31",tab:"12.31",weekday:"週四",name:"DAY 02",headline:"The last dance of 2026.",subtitle:"一場按摩、一頓海鮮，然後跳舞迎接新年。",symbol:"sparkle",
     route:["Amara Bangkok Hotel","Health Land Sathorn Bangkok","Somboon Seafood Surawong Bangkok","Siam Paragon Bangkok"],
     events:[
       {time:"早上",type:"早餐",title:"飯店早餐",desc:"慢慢開始跨年這一天。",status:"planned",place:"Amara Bangkok Hotel"},
@@ -40,7 +54,7 @@ const days = [
     ]
   },
   {
-    date:"2027-01-01",tab:"01.01",weekday:"週五",name:"DAY 03",headline:"A new year, a slow morning.",subtitle:"2027 的第一天，走進曼谷有趣的街區。",symbol:"☼",
+    date:"2027-01-01",tab:"01.01",weekday:"週五",name:"DAY 03",headline:"A new year, a slow morning.",subtitle:"2027 的第一天，走進曼谷有趣的街區。",symbol:"sun",
     route:["Amara Bangkok Hotel","Song Wat Road Bangkok","Dusit Central Park Bangkok"],
     events:[
       {time:"早上",type:"早餐",title:"飯店早餐 · 慢慢醒來",desc:"不用趕行程，把節奏留給自己。",status:"planned",place:"Amara Bangkok Hotel"},
@@ -51,7 +65,7 @@ const days = [
     ]
   },
   {
-    date:"2027-01-02",tab:"01.02",weekday:"週六",name:"DAY 04",headline:"A little luxury.",subtitle:"讓午後療癒，讓夜晚有儀式感。",symbol:"✴",
+    date:"2027-01-02",tab:"01.02",weekday:"週六",name:"DAY 04",headline:"A little luxury.",subtitle:"讓午後療癒，讓夜晚有儀式感。",symbol:"diamond",
     route:["Amara Bangkok Hotel","Côte by Mauro Colagreco Capella Bangkok"],
     events:[
       {time:"早上",type:"早餐",title:"飯店早餐",desc:"最後一個完整的曼谷白天。",status:"planned",place:"Amara Bangkok Hotel"},
@@ -61,7 +75,7 @@ const days = [
     ]
   },
   {
-    date:"2027-01-03",tab:"01.03",weekday:"週日",name:"DAY 05",headline:"Until next time, BKK.",subtitle:"把最後一點曼谷的光，帶回家。",symbol:"↗",
+    date:"2027-01-03",tab:"01.03",weekday:"週日",name:"DAY 05",headline:"Until next time, BKK.",subtitle:"把最後一點曼谷的光，帶回家。",symbol:"arrow",
     route:["Amara Bangkok Hotel","Suvarnabhumi Airport Bangkok"],
     events:[
       {time:"早上",type:"早餐",title:"飯店早餐、整理行李",desc:"最後檢查護照、行李與隨身物品。",status:"planned",place:"Amara Bangkok Hotel"},
@@ -93,12 +107,12 @@ function makeRoute(points) {
 }
 function entryMarkup(entry) {
   const status = entry.status || "planned";
-  const map = entry.place ? '<a class="action-btn map" href="'+mapLink(entry.place)+'" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(entry.title)+' Google Maps">地圖導航 <span aria-hidden="true">↗</span></a>' : "";
-  const email = mailLink(entry.mail) ? '<a class="action-btn mail" href="'+mailLink(entry.mail)+'" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(entry.title)+' 訂位信">訂位信 <span aria-hidden="true">↗</span></a>' : "";
+  const map = entry.place ? '<a class="action-btn map" href="'+mapLink(entry.place)+'" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(entry.title)+' Google Maps">地圖導航 <span class="arrow-wrap" aria-hidden="true">'+siteIconSvg("arrow","arrow-svg")+'</span></a>' : "";
+  const email = mailLink(entry.mail) ? '<a class="action-btn mail" href="'+mailLink(entry.mail)+'" target="_blank" rel="noopener noreferrer" aria-label="開啟 '+escapeHtml(entry.title)+' 訂位信">訂位信 <span class="arrow-wrap" aria-hidden="true">'+siteIconSvg("arrow","arrow-svg")+'</span></a>' : "";
   return '<article class="timeline-entry"><div class="timeline-time">'+escapeHtml(entry.time)+'</div><div class="timeline-rail" aria-hidden="true"></div><div class="entry-card"><div><div class="entry-labels"><span class="category">'+escapeHtml(entry.type)+'</span><span class="state state-'+status+'">'+stateNames[status]+'</span></div><h4 class="entry-title">'+escapeHtml(entry.title)+'</h4><p class="entry-note">'+escapeHtml(entry.desc)+'</p></div>'+(map||email?'<div class="entry-actions">'+map+email+'</div>':"")+'</div></article>';
 }
 function bookingMarkup(booking) {
-  return '<a class="booking-card" href="'+mailLink(booking.mail)+'" target="_blank" rel="noopener noreferrer" aria-label="在 Gmail 開啟 '+escapeHtml(booking.name)+' 確認信"><span class="booking-type">'+escapeHtml(booking.type)+'</span><h3>'+escapeHtml(booking.name)+'</h3><p class="booking-desc">'+escapeHtml(booking.detail)+'</p><div class="booking-foot"><strong>'+escapeHtml(booking.date)+'</strong><span>OPEN EMAIL ↗</span></div></a>';
+  return '<a class="booking-card" href="'+mailLink(booking.mail)+'" target="_blank" rel="noopener noreferrer" aria-label="在 Gmail 開啟 '+escapeHtml(booking.name)+' 確認信"><span class="booking-type">'+escapeHtml(booking.type)+'</span><h3>'+escapeHtml(booking.name)+'</h3><p class="booking-desc">'+escapeHtml(booking.detail)+'</p><div class="booking-foot"><strong>'+escapeHtml(booking.date)+'</strong><span>OPEN EMAIL '+siteIconSvg("arrow","booking-arrow-svg")+'</span></div></a>';
 }
 function getDayIndex() {
   const day = new URLSearchParams(location.search).get("day");
@@ -113,7 +127,7 @@ function drawDay(index, updateHistory=true) {
     tab.setAttribute("aria-selected",String(i===index));
     tab.tabIndex=i===index?0:-1;
   });
-  $("#dayFeature").innerHTML='<div><div class="feature-kicker">'+escapeHtml(day.name)+' / '+escapeHtml(day.weekday)+' / '+escapeHtml(day.date)+'</div><h3 class="feature-title">'+escapeHtml(day.headline)+'</h3><p class="feature-desc">'+escapeHtml(day.subtitle)+'</p></div><div class="feature-emoji" aria-hidden="true">'+escapeHtml(day.symbol)+'</div>';
+  $("#dayFeature").innerHTML='<div><div class="feature-kicker">'+escapeHtml(day.name)+' / '+escapeHtml(day.weekday)+' / '+escapeHtml(day.date)+'</div><h3 class="feature-title">'+escapeHtml(day.headline)+'</h3><p class="feature-desc">'+escapeHtml(day.subtitle)+'</p></div><div class="feature-graphic" aria-hidden="true">'+siteIconSvg(day.symbol,"feature-svg")+'</div>';
   $("#itemCount").textContent=String(day.events.length).padStart(2,"0");
   $("#timeline").innerHTML=day.events.map(entryMarkup).join("");
   $("#dayRoute").href=makeRoute(day.route);
@@ -148,9 +162,9 @@ function updateCountdown() {
     const d=Math.ceil((start-now)/86400000);
     node.innerHTML=d+' <small>'+ (d===1?"DAY TO GO":"DAYS TO GO") +'</small>';
   } else if(now<end) {
-    node.innerHTML='WE ARE <small>IN BANGKOK ✳</small>';
+    node.innerHTML='WE ARE <small>IN BANGKOK '+siteIconSvg("sparkle","countdown-sparkle")+'</small>';
   } else {
-    node.innerHTML='WHAT A <small>TRIP ✳</small>';
+    node.innerHTML='WHAT A <small>TRIP '+siteIconSvg("sparkle","countdown-sparkle")+'</small>';
   }
 }
 function init() {
