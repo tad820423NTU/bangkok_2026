@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#191620" />
+  <meta name="description" content="Chia-Hao × Yueh-Chun 的曼谷跨年旅行手冊｜2026.12.30—2027.01.03。每日行程、Google Maps 導航及訂位信件，一站收藏。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BANGKOK AFTER DARK · Chia-Hao × Yueh-Chun" />
+  <meta property="og:description" content="Five days, four nights, one unforgettable city. 2026 → 2027" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1729664252016-2fa75eb8cb31?auto=format&fit=crop&w=1200&q=85" />
+  <title>BANGKOK AFTER DARK | Chia-Hao × Yueh-Chun</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#itinerary">跳至每日行程</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="回到網站首頁"><span class="brand-mark" aria-hidden="true">✳</span><span>BKK<span class="brand-dot">.</span>26</span></a>
+    <span class="topbar-label">A LITTLE TRIP BOOK <span class="sep">/</span> PRIVATE EDITION</span>
+    <a href="#reservations" class="topbar-link">OUR BOOKINGS <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-photo" src="https://images.unsplash.com/photo-1729664252016-2fa75eb8cb31?auto=format&fit=crop&w=2000&q=85" alt="夜色中的曼谷湄南河與城市燈光" fetchpriority="high" />
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div class="hero-topline"><span class="pill pill-light"><span class="small-sparkle">✳</span> THAILAND / NEW YEAR ISSUE</span><span class="hero-index">VOL. 01 — 2026/27</span></div>
+        <div class="hero-heading">
+          <p class="hero-kicker">CITY OF LIGHTS. NIGHTS TO REMEMBER.</p>
+          <h1 id="hero-title">BANGKOK<br/><em>AFTER</em> DARK<span class="title-dot">.</span></h1>
+          <p class="hero-subtitle">把白天留給街道，把夜晚留給我們。<br/>Chia-Hao <span class="hero-cross">×</span> Yueh-Chun</p>
+        </div>
+        <div class="hero-bottomline">
+          <div class="hero-dates"><span class="mono-label">DEPARTURE — RETURN</span><strong>30 DEC 2026 <span class="date-arrow">→</span> 03 JAN 2027</strong></div>
+          <div class="hero-stats"><span>05 <small>DAYS</small></span><i></i><span>04 <small>NIGHTS</small></span></div>
+        </div>
+      </div>
+      <div class="hero-side-label" aria-hidden="true">SILOM · SIAM · SATHORN · RIVERSIDE</div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div>STAY A LITTLE LONGER <span>✳</span> EAT WELL <span>✳</span> DANCE ALL NIGHT <span>✳</span> GET LOST IN BANGKOK <span>✳</span> STAY A LITTLE LONGER <span>✳</span> EAT WELL <span>✳</span></div></div>
+
+    <section class="intro section-shell" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="section-eyebrow"><span class="eyebrow-mark"></span> THE ESCAPE</p>
+        <h2 id="intro-title">Same city.<br/><span>Different rhythm.</span></h2>
+        <p>從曼谷街頭的咖啡香，到跨年夜最熱烈的節拍。這裡是我們五天四夜的旅行小誌，訂位、路線與即興的空白，都放在一起。</p>
+      </div>
+      <div class="intro-info">
+        <div class="info-top"><span>TRAVEL STATUS</span><span class="small-sparkle">✳</span></div>
+        <div class="countdown" id="countdown">LOADING...</div>
+        <div class="info-bottom"><span>LOCAL TIME</span><strong>GMT +07:00 / BANGKOK</strong></div>
+        <div class="info-line"></div>
+        <a class="text-arrow" href="https://www.google.com/maps/search/?api=1&query=Bangkok%2C%20Thailand" target="_blank" rel="noopener noreferrer">OPEN GOOGLE MAPS <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="itinerary section-shell" id="itinerary" aria-labelledby="itinerary-title">
+      <div class="section-heading">
+        <div><p class="section-eyebrow"><span class="eyebrow-mark"></span> THE ITINERARY / 01—05</p><h2 id="itinerary-title">Day by <em>day.</em></h2></div>
+        <p class="section-note">點選日期查看行程<br/>時間均為當地時間</p>
+      </div>
+      <div class="day-tabs" id="dayTabs" role="tablist" aria-label="選擇曼谷旅行日期"></div>
+      <div class="day-feature" id="dayFeature" aria-live="polite"></div>
+      <div class="timeline-head"><h3>THE PLAN <span id="itemCount"></span></h3><div class="status-key"><span><i class="key-dot confirmed"></i> 已確認</span><span><i class="key-dot planned"></i> 規劃中</span><span><i class="key-dot flexible"></i> 彈性</span></div></div>
+      <div class="timeline" id="timeline"></div>
+      <div class="route-panel">
+        <div><div class="route-kicker">GO WITH THE FLOW</div><strong>一路走，一路看。</strong><p>開啟 Google Maps 規劃當日路線。實際交通時間請以當天路況為準。</p></div>
+        <a class="route-button" id="dayRoute" href="https://www.google.com/maps/" target="_blank" rel="noopener noreferrer">今日地圖路線 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="bookings-section" id="reservations" aria-labelledby="booking-title">
+      <div class="section-shell">
+        <div class="section-heading bookings-heading">
+          <div><p class="section-eyebrow"><span class="eyebrow-mark"></span> ALL IN ONE PLACE</p><h2 id="booking-title">The <em>bookings.</em></h2></div>
+          <p class="section-note">已核對 Gmail 的確認信<br/>點選卡片直接開啟原信</p>
+        </div>
+        <div id="bookingGrid" class="booking-grid"></div>
+        <div class="privacy-inline"><span aria-hidden="true">↗</span> Gmail 連結只會開啟原始信件，不會公開信件內容；需以有權存取該信的 Google 帳號登入。</div>
+      </div>
+    </section>
+
+    <section class="essentials section-shell" id="essentials" aria-labelledby="essentials-title">
+      <div class="section-heading"><div><p class="section-eyebrow"><span class="eyebrow-mark"></span> YOUR POCKET GUIDE</p><h2 id="essentials-title">The <em>essentials.</em></h2></div><p class="section-note">重要資訊放這裡<br/>不公開敏感的訂位資料</p></div>
+      <div class="essentials-grid">
+        <article class="hotel-card">
+          <div class="card-eyebrow">OUR BASE / 04 NIGHTS</div>
+          <div class="hotel-orb" aria-hidden="true">✳</div>
+          <h3>AMARA<br/>BANGKOK</h3>
+          <p>30 DEC — 03 JAN<br/>行政雙人房・含早餐</p>
+          <div class="hotel-actions"><a href="https://www.google.com/maps/search/?api=1&query=Amara%20Bangkok%20Hotel%20180%2F1%20Surawong" target="_blank" rel="noopener noreferrer">地圖導航 <span aria-hidden="true">↗</span></a><a href="https://mail.google.com/mail/u/?authuser=tad820423%40gmail.com#all/1a1832a4ae06e204" target="_blank" rel="noopener noreferrer">訂房信件 <span aria-hidden="true">↗</span></a></div>
+          <small>180/1 Surawong Rd, Bang Rak, Bangkok</small>
+        </article>
+        <article class="flight-card">
+          <div class="card-eyebrow">FLIGHT NOTES / STARLUX</div>
+          <div class="flight-row"><div><span class="flight-code">JX741 <b>12.30 WED</b></span><strong>TPE <em>→</em> BKK</strong><small>09:25 — 12:35 ・桃園 T2 出發</small></div><span class="flight-plane" aria-hidden="true">✈</span></div>
+          <div class="flight-row"><div><span class="flight-code">JX742 <b>01.03 SUN</b></span><strong>BKK <em>→</em> TPE</strong><small>13:45 — 18:25 ・桃園 T2 抵達</small></div><span class="flight-plane" aria-hidden="true">✈</span></div>
+          <a class="flight-mail" href="https://mail.google.com/mail/u/?authuser=tad820423%40gmail.com#all/19f3c2b374cbd6b9" target="_blank" rel="noopener noreferrer">星宇航空訂位信 <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <div class="notice-panel">
+        <span class="notice-symbol" aria-hidden="true">!</span>
+        <div><strong>跨年前的小提醒</strong><p>White Party 票券 12/15 開放預先登記。12/30 11:00–18:00 可至 Siam Discovery 4F 領取手環，12/31 的 NYE 派對票券最晚入場時間為 22:00。請準備與票券姓名一致的身分證件。</p></div>
+        <a href="https://mail.google.com/mail/u/?authuser=tad820423%40gmail.com#all/1a0f5b6fb9b552f0" target="_blank" rel="noopener noreferrer" class="notice-link">查看票券信 ↗</a>
+      </div>
+    </section>
+
+    <section class="closing"><div class="closing-inner"><span>SEE YOU IN THE CITY OF ANGELS</span><strong>LET'S MAKE<br/><em>SOME MEMORIES.</em></strong><div>CHIA-HAO <span>✳</span> YUEH-CHUN</div></div></section>
+  </main>
+  <footer class="footer"><div><span class="footer-logo">BKK<span>.</span>26</span><small>CREATED FOR OUR BANGKOK NEW YEAR / 2026—27</small></div><p>照片：<a href="https://unsplash.com/photos/a-view-of-a-city-at-night-from-across-the-water-cj7KG6jjaaA" target="_blank" rel="noopener noreferrer">Unsplash / allPhoto Bangkok</a><br/>此頁面公開展示行程摘要，不儲存密碼、PIN 或電子票券。</p></footer>
+  <nav class="mobile-nav" aria-label="快速切換"><a href="#top"><span aria-hidden="true">✳</span>首頁</a><a href="#itinerary"><span aria-hidden="true">▤</span>行程</a><a href="#reservations"><span aria-hidden="true">▣</span>訂位</a><a href="#essentials"><span aria-hidden="true">✈</span>資訊</a></nav>
+</body>
+</html>
