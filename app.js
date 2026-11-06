@@ -2,7 +2,7 @@
    Public website: never include booking PINs, confirmation codes, QR codes, payment cards, or pickup home addresses. */
 "use strict";
 
-const gmailBase = "https://mail.google.com/mail/u/?authuser=tad820423%40gmail.com#all/";
+const gmailBase = "https://mail.google.com/mail/u/0/#all/";
 const mail = Object.freeze({
   flight:"19f3c2b374cbd6b9", hotel:"1a1832a4ae06e204", airport:"1a1833a9b70fd8e4",
   lennons:"1a130aaaca99f010", massage:"1a130c15c1ac6cfd",
